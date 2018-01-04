@@ -41,6 +41,9 @@ router.post('/', async (ctx, next) => {
 
 router.get('/', async (ctx, next) => {
   ctx.state.title = '房源列表'
+  const query = new AV.Query('Room').limit(10).skip(0)
+  const res = await query.find()
+  console.log(res)
   await next()
   await ctx.render('rooms.ejs')
 })
