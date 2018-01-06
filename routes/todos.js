@@ -30,10 +30,10 @@ router.get('/', async function(ctx) {
 router.post('/', async function(ctx) {
   const content = ctx.request.body.content;
   ctx.body = content;
-  var todo = new Todo();
+  const todo = new Todo();
   todo.set('content', content);
   await todo.save();
   ctx.redirect('/todos');
 });
-
+ 
 module.exports = router;
