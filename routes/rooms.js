@@ -55,7 +55,8 @@ router.get('/', async (ctx, next) => {
       describe: item.get('describe'),
       price: item.get('price'),
       wechat: item.get('wechat'),
-      auth: item.get('auth')
+      auth: item.get('auth'),
+      id: item.id
     }
   })
   ctx.state.rooms = rooms
@@ -71,7 +72,7 @@ router.get('/', async (ctx, next) => {
       isActive: page == currentPage
     }
   })
-  console.log(pages)
+  console.log(rooms)
   // console.log(ctx.state)
   ctx.state.pages = pages
   await next()
@@ -86,4 +87,12 @@ router.get('/add', async (ctx, next) => {
   await ctx.render('addRoom.ejs', {})
 })
 
+router.get('/detail/:id', async (ctx, next) => {
+  ctx.state.title = '测试页面'
+  const id = ctx.params.id
+  const {attributes: room} = await new AV.Query('Room').get(id)
+  ctx.state.room = room
+  await next()
+  await ctx.render('room.ejs')
+})
 module.exports = router
