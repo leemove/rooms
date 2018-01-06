@@ -5,13 +5,27 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link href="https://cdn.bootcss.com/bootstrap/4.0.0-beta.2/css/bootstrap.css" rel="stylesheet">
     <link rel="stylesheet" href="/stylesheets/style.css">
+    <link rel="stylesheet" href="/stylesheets/rooms.css">
   </head>
   <body>
+    <div class="container">
+      <h1>房屋列表</h1>
+      <ul class="list-group">
+      <% for(room of rooms) { %>
+        <li class="list-group-item">
+          <a><%= room.title %></a>
+        </li>
+      <% } %>
+      </ul>
 
-  <ul class="list-group">
-    <li class="list-group-item">Cras justo odio</li>
-  </ul>
-
+      <nav aria-label="Page navigation example">
+        <ul class="pagination">
+          <% for(page of pages) { %>
+            <li class="page-item <%= page.isActive ? 'active': '' %>"><a class="page-link" href="<%= page.url %>"><%= page.name %></a></li>
+           <% } %>
+        </ul>
+      </nav>
+    </div>
     <script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://cdn.bootcss.com/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="https://cdn.bootcss.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
