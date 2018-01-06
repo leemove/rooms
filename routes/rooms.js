@@ -23,7 +23,6 @@ router.get('/', async (ctx, next) => {
   })
   ctx.state.rooms = rooms
   const totalPage = parseInt(total/10) + 1
-  // console.log(new Array(totalPage))
   const arr = _.range(totalPage)
   const pages = arr.map((item, index) => {
     const currentPage = item + 1
@@ -33,7 +32,6 @@ router.get('/', async (ctx, next) => {
       isActive: page == currentPage
     }
   })
-  // console.log(ctx.state)
   ctx.state.pages = pages
   await next()
   await ctx.render('rooms.ejs')
