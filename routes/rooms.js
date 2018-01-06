@@ -20,8 +20,10 @@ router.post('/', async (ctx, next) => {
     ctx.status = 400
     return
   }
+  const index = await new AV.Query('Room').count()
   const room = new Room(
-    {
+    { 
+      index: index + 1,
       title: body.title,
       describe: body.describe,
       price:body.price,
