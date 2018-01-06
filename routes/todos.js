@@ -29,7 +29,6 @@ router.get('/', async function(ctx) {
 // 新增 Todo 项目
 router.post('/', async function(ctx) {
   const content = ctx.request.body.content;
-  console.log(content);
   ctx.body = content;
   var todo = new Todo();
   todo.set('content', content);
