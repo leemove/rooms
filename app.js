@@ -29,8 +29,8 @@ app.use(AV.koa());
 app.use(bodyParser());
 
 router.get('/', async function(ctx) {
-  ctx.state.currentTime = new Date();
-  await ctx.render('./index.ejs');
+  // ctx.state.currentTime = new Date();
+  await ctx.redirect('/rooms')
 });
 
 // 可以将一类的路由单独保存在一个文件中
